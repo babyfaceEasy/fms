@@ -1,12 +1,29 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 $font-stack:    Helvetica, sans-serif;
-$primary-color: #333;
+$primary-color: #5ed663;
+$primary-color-dark: #388E3C;
+$accent-color: #8BC34A;
 
-body {
-  font: 100% $font-stack;
-  color: $primary-color;
-}
 
 .hidden_info{
   display: none;
+}
+
+.navbar-default {
+    border-color: $primary-color;
+
+}
+
+.panel-default>.panel-heading {
+    border-color: $primary-color;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: $accent-color;
+    border-color: $primary-color-dark;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: $primary-color-dark;
 }
