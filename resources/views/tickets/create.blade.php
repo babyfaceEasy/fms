@@ -65,7 +65,15 @@
                                 @endif
                             </div>
                         </div>
-
+												<div id="transmission" class="hidden_info">
+														<h3>Transmission form</h3>
+												</div>
+												<div id="base_switch" class="hidden_info">
+														<h3>Base station switch</h3>
+												</div>
+												<div id="ipnetwork" class="hidden_info">
+														<h3>IP Network</h3>
+												</div>
                         <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
                             <label for="message" class="col-md-4 control-label">Message</label>
 

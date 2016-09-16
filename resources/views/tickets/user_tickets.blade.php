@@ -7,7 +7,7 @@
 		<div class="col-md-10 col-md-offset-1">
 	        <div class="panel panel-default">
 	        	<div class="panel-heading">
-	        		<i class="fa fa-ticket"> My Tickets</i>
+	        		<i class="fa fa-ticket"> My Trouble Tickets</i>
 	        	</div>
 
 	        	<div class="panel-body">
@@ -21,6 +21,7 @@
 		        					<th>Title</th>
 		        					<th>Status</th>
 		        					<th>Last Updated</th>
+											<th>Action</th>
 		        				</tr>
 		        			</thead>
 		        			<tbody>
@@ -46,6 +47,7 @@
 		        					@endif
 		        					</td>
 		        					<td>{{ $ticket->updated_at }}</td>
+											<td><a href="#">Escalate</a></td>
 		        				</tr>
 		        			@endforeach
 		        			</tbody>

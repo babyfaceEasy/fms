@@ -40,6 +40,37 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('phone_number') ? ' has-error' : '' }}">
+                            <label for="phone_number" class="col-md-4 control-label">Phone Number</label>
+
+                            <div class="col-md-6">
+                                <input id="phone_number" type="number" class="form-control" name="phone_number" value="{{ old('phone_number') }}">
+
+                                @if ($errors->has('phone_number'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phone_number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('region') ? ' has-error' : '' }}">
+                            <label for="region" class="col-md-4 control-label">Select Region</label>
+
+                            <div class="col-md-6">
+                                <select id="region" type="region" class="form-control" name="region" placeholder="eg: 080xxxxxxxx">
+                                	<option value="">Select Region</option>
+										<option value="sw">South west</option>
+                                </select>
+
+                                @if ($errors->has('region'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('region') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
