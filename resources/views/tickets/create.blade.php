@@ -66,29 +66,233 @@
                             </div>
                         </div>
 												<div id="transmission" class="hidden_info">
-														<h3>Transmission form</h3>
+													<div class="form-group">
+														<span class="col-md-offset-4 text text-muted" style="padding-left:20px;">Transmission</span>
+													</div>
+														<div class="form-group{{ $errors->has('node_a') ? ' has-error' : '' }}">
+		                            <label for="node_a" class="col-md-4 control-label">Node A</label>
+
+		                            <div class="col-md-6">
+		                                <input id="node_a" type="text" class="form-control" name="node_a" value="{{ old('node_a') }}">
+
+		                                @if ($errors->has('node_a'))
+		                                    <span class="help-block">
+		                                        <strong>{{ $errors->first('node_a') }}</strong>
+		                                    </span>
+		                                @endif
+		                            </div>
+		                        </div>
+														<div class="form-group{{ $errors->has('node_b') ? ' has-error' : '' }}">
+		                            <label for="node_b" class="col-md-4 control-label">Node B</label>
+
+		                            <div class="col-md-6">
+		                                <input id="node_b" type="text" class="form-control" name="node_b" value="{{ old('node_b') }}">
+
+		                                @if ($errors->has('node_b'))
+		                                    <span class="help-block">
+		                                        <strong>{{ $errors->first('node_b') }}</strong>
+		                                    </span>
+		                                @endif
+		                            </div>
+		                        </div>
+														<div class="form-group{{ $errors->has('node_a') ? ' has-error' : '' }}">
+		                            <label for="vendor" class="col-md-4 control-label">Vendor</label>
+
+		                            <div class="col-md-6">
+		                                <input id="node_a" type="text" class="form-control" name="node_a" value="{{ old('node_a') }}">
+
+		                                @if ($errors->has('node_a'))
+		                                    <span class="help-block">
+		                                        <strong>{{ $errors->first('node_a') }}</strong>
+		                                    </span>
+		                                @endif
+		                            </div>
+		                        </div>
+														<div class="form-group{{ $errors->has('node_a') ? ' has-error' : '' }}">
+		                            <label for="node_a" class="col-md-4 control-label">Time of occurence</label>
+
+		                            <div class="col-md-6">
+		                                <input id="node_a" type="datetime" class="form-control" name="node_a" value="{{ old('node_a') }}">
+
+		                                @if ($errors->has('node_a'))
+		                                    <span class="help-block">
+		                                        <strong>{{ $errors->first('node_a') }}</strong>
+		                                    </span>
+		                                @endif
+		                            </div>
+		                        </div>
+														<div class="form-group{{ $errors->has('node_a') ? ' has-error' : '' }}">
+		                            <label for="node_a" class="col-md-4 control-label">Cause of failure</label>
+
+		                            <div class="col-md-6">
+		                                <input id="node_a" type="text" class="form-control" name="node_a" value="{{ old('node_a') }}">
+
+		                                @if ($errors->has('node_a'))
+		                                    <span class="help-block">
+		                                        <strong>{{ $errors->first('node_a') }}</strong>
+		                                    </span>
+		                                @endif
+		                            </div>
+		                        </div>
+
+														<div id="message"  class="form-group{{ $errors->has('message') ? ' has-error' : '' }} ">
+		                            <label for="message" class="col-md-4 control-label">Impact</label>
+
+		                            <div class="col-md-6">
+		                                <textarea rows="10" id="message" class="form-control" name="message"></textarea>
+
+		                                @if ($errors->has('message'))
+		                                    <span class="help-block">
+		                                        <strong>{{ $errors->first('message') }}</strong>
+		                                    </span>
+		                                @endif
+		                            </div>
+		                        </div>
 												</div>
 												<div id="base_switch" class="hidden_info">
-														<h3>Base station switch</h3>
+														<div class="form-group">
+															<span class="col-md-offset-4 text text-muted" style="padding-left:20px;"> Base station switch</span>
+														</div>
+														<div class="form-group{{ $errors->has('node_a') ? ' has-error' : '' }}">
+		                            <label for="node_a" class="col-md-4 control-label">Site ID</label>
+
+		                            <div class="col-md-6">
+		                                <input id="node_a" type="text" class="form-control" name="node_a" value="{{ old('node_a') }}">
+
+		                                @if ($errors->has('node_a'))
+		                                    <span class="help-block">
+		                                        <strong>{{ $errors->first('node_a') }}</strong>
+		                                    </span>
+		                                @endif
+		                            </div>
+		                        </div>
+														<div class="form-group{{ $errors->has('node_a') ? ' has-error' : '' }}">
+		                            <label for="node_a" class="col-md-4 control-label">Region</label>
+
+		                            <div class="col-md-6">
+		                                <input id="node_a" type="text" class="form-control" name="node_a" value="{{ old('node_a') }}">
+
+		                                @if ($errors->has('node_a'))
+		                                    <span class="help-block">
+		                                        <strong>{{ $errors->first('node_a') }}</strong>
+		                                    </span>
+		                                @endif
+		                            </div>
+		                        </div>
+														<div class="form-group{{ $errors->has('node_a') ? ' has-error' : '' }}">
+		                            <label for="node_a" class="col-md-4 control-label">BSC/RNC</label>
+
+		                            <div class="col-md-6">
+		                                <input id="node_a" type="text" class="form-control" name="node_a" value="{{ old('node_a') }}">
+
+		                                @if ($errors->has('node_a'))
+		                                    <span class="help-block">
+		                                        <strong>{{ $errors->first('node_a') }}</strong>
+		                                    </span>
+		                                @endif
+		                            </div>
+		                        </div>
+														<div class="form-group{{ $errors->has('node_a') ? ' has-error' : '' }}">
+		                            <label for="node_a" class="col-md-4 control-label">Time of occurence</label>
+
+		                            <div class="col-md-6">
+		                                <input id="node_a" type="datetime" class="form-control" name="node_a" value="{{ old('node_a') }}">
+
+		                                @if ($errors->has('node_a'))
+		                                    <span class="help-block">
+		                                        <strong>{{ $errors->first('node_a') }}</strong>
+		                                    </span>
+		                                @endif
+		                            </div>
+		                        </div>
+														<div class="form-group{{ $errors->has('node_a') ? ' has-error' : '' }}">
+		                            <label for="node_a" class="col-md-4 control-label">Cause of failure</label>
+
+		                            <div class="col-md-6">
+		                                <input id="node_a" type="text" class="form-control" name="node_a" value="{{ old('node_a') }}">
+
+		                                @if ($errors->has('node_a'))
+		                                    <span class="help-block">
+		                                        <strong>{{ $errors->first('node_a') }}</strong>
+		                                    </span>
+		                                @endif
+		                            </div>
+		                        </div>
+														<div id="message"  class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
+		                            <label for="message" class="col-md-4 control-label">Impact</label>
+
+		                            <div class="col-md-6">
+		                                <textarea rows="10" id="message" class="form-control" name="message"></textarea>
+
+		                                @if ($errors->has('message'))
+		                                    <span class="help-block">
+		                                        <strong>{{ $errors->first('message') }}</strong>
+		                                    </span>
+		                                @endif
+		                            </div>
+		                        </div>
 												</div>
 												<div id="ipnetwork" class="hidden_info">
-														<h3>IP Network</h3>
+													<div class="form-group">
+														<span class="col-md-offset-4 text text-muted" style="padding-left:20px;">Ip Network</span>
+													</div>
+														<div class="form-group{{ $errors->has('node_a') ? ' has-error' : '' }}">
+		                            <label for="node_a" class="col-md-4 control-label">Location</label>
+
+		                            <div class="col-md-6">
+		                                <input id="node_a" type="text" class="form-control" name="node_a" value="{{ old('node_a') }}">
+
+		                                @if ($errors->has('node_a'))
+		                                    <span class="help-block">
+		                                        <strong>{{ $errors->first('node_a') }}</strong>
+		                                    </span>
+		                                @endif
+		                            </div>
+		                        </div>
+														<div class="form-group{{ $errors->has('node_a') ? ' has-error' : '' }}">
+		                            <label for="node_a" class="col-md-4 control-label">Time of occurence</label>
+
+		                            <div class="col-md-6">
+		                                <input id="node_a" type="datetime" class="form-control" name="node_a" value="{{ old('node_a') }}">
+
+		                                @if ($errors->has('node_a'))
+		                                    <span class="help-block">
+		                                        <strong>{{ $errors->first('node_a') }}</strong>
+		                                    </span>
+		                                @endif
+		                            </div>
+		                        </div>
+														<div class="form-group{{ $errors->has('node_a') ? ' has-error' : '' }}">
+		                            <label for="node_a" class="col-md-4 control-label">Cause of failure</label>
+
+		                            <div class="col-md-6">
+		                                <input id="node_a" type="text" class="form-control" name="node_a" value="{{ old('node_a') }}">
+
+		                                @if ($errors->has('node_a'))
+		                                    <span class="help-block">
+		                                        <strong>{{ $errors->first('node_a') }}</strong>
+		                                    </span>
+		                                @endif
+		                            </div>
+		                        </div>
+
+														<div id="message"  class="form-group{{ $errors->has('message') ? ' has-error' : '' }} ">
+		                            <label for="message" class="col-md-4 control-label">Impact</label>
+
+		                            <div class="col-md-6">
+		                                <textarea rows="10" id="message" class="form-control" name="message"></textarea>
+
+		                                @if ($errors->has('message'))
+		                                    <span class="help-block">
+		                                        <strong>{{ $errors->first('message') }}</strong>
+		                                    </span>
+		                                @endif
+		                            </div>
+		                        </div>
 												</div>
-                        <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
-                            <label for="message" class="col-md-4 control-label">Message</label>
 
-                            <div class="col-md-6">
-                                <textarea rows="10" id="message" class="form-control" name="message"></textarea>
 
-                                @if ($errors->has('message'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('message') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
+                        <div id="ticketBtn" class="form-group hidden_info">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-ticket"></i> Open Ticket
