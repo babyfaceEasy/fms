@@ -63,24 +63,58 @@ class TicketsController extends Controller
      */
     public function store(Request $request, AppMailer $mailer)
     {
-        $this->validate($request, [
+
+			$ticket = null;
+			$alertMessage = "A ticket with ID: #6JSFY4KYP3 has been opened.";
+
+			if($request['category'] == '1'){
+				$this->validate($request, [
             'title'     => 'required',
             'category'  => 'required',
             'priority'  => 'required',
-            'message'   => 'required'
+						'node_a'		=> 'required',
+						'node_b'		=> 'required'
         ]);
 
-        $ticket = new Ticket([
+				$ticket = new Ticket([
             'title'     => $request->input('title'),
             'user_id'   => Auth::user()->id,
             'ticket_id' => strtoupper(str_random(10)),
             'category_id'  => $request->input('category'),
             'priority'  => $request->input('priority'),
-            'message'   => $request->input('message'),
+            'message'   => $request->input('node_a'),
             'status'    => "Open",
         ]);
+				$ticket->save();
+				$alertMessage = "A transmission ticket with ID: #$ticket->ticket_id has been opened.";
+				$alertMessage = str_replace(" ","+",$alertMessage);
+				$this->sendSMS(trim($request->user()->phone_number),$alertMessage);
+			}elseif($request['category'] == '2'){
+				$this->validate($request, [
+            'title'     => 'required',
+            'category'  => 'required',
+            'priority'  => 'required',
+        ]);
+			}elseif($request['category'] == '3'){
+				$this->validate($request, [
+            'title'     => 'required',
+            'category'  => 'required',
+            'priority'  => 'required',
+        ]);
+			}else{
+				$this->validate($request, [
+            'title'     => 'required',
+            'category'  => 'required',
+            'priority'  => 'required',
+        ]);
+			}
 
-        $ticket->save();
+
+
+
+
+
+
 
         //$mailer->sendTicketInformation(Auth::user(), $ticket);
 
@@ -124,4 +158,21 @@ class TicketsController extends Controller
 
         return redirect()->back()->with("status", "The ticket has been closed.");
     }
+
+		public function sendSMS($to,$message){
+			$message = str_replace("#","",$message);
+			$url = "http://www.smslive247.com/http/index.aspx?cmd=sendquickmsg&owneremail=bayorasunmo@gmail.com&subacct=FMS&subacctpwd=bayorfms&message=".$message."&sender=GLONOC&sendto=".trim($to)."&msgtype=0";
+			/* call the URL */
+
+			if ($f = @fopen($url, "r"))  {
+				 $answer = fgets($f, 255);
+				 if (substr($answer, 0, 1) == "+") {
+					   echo $answer;
+					 }  else  {
+						   echo $answer;
+						 }
+					 }  else  {
+						 return $answer;
+					 }
+		}
 }
