@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Mailers\AppMailer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Excel;
 
 class TicketsController extends Controller
 {
@@ -24,6 +25,7 @@ class TicketsController extends Controller
      */
     public function index()
     {
+
     	$tickets = Ticket::paginate(10);
         $categories = Category::all();
 
@@ -54,6 +56,20 @@ class TicketsController extends Controller
 
         return view('tickets.create', compact('categories'));
     }
+
+		public function exportExcelReport()
+		{
+			//add datetime stamp
+			Excel::create('HOC_Report', function($excel) {
+
+			    $excel->sheet('Sheetname', function($sheet) {
+						  $tickets = Ticket::where('user_id', Auth::user()->id)->get();
+			        $sheet->fromArray($tickets);
+
+			    });
+
+			})->export('xls');
+		}
 
     /**
      * Store a newly created ticket in database.
@@ -108,14 +124,6 @@ class TicketsController extends Controller
             'priority'  => 'required',
         ]);
 			}
-
-
-
-
-
-
-
-
         //$mailer->sendTicketInformation(Auth::user(), $ticket);
 
         return redirect()->back()->with("status", "A ticket with ID: #$ticket->ticket_id has been opened.");
@@ -170,9 +178,9 @@ class TicketsController extends Controller
 					   echo $answer;
 					 }  else  {
 						   echo $answer;
-						 }
+					 }
 					 }  else  {
-						 return $answer;
+						 return false;
 					 }
 		}
 }

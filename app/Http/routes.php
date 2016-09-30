@@ -16,6 +16,8 @@ Route::auth();
 Route::get('/', 'HomeController@index');
 
 Route::get('new_ticket', 'TicketsController@create');
+Route::get('download_report', 'TicketsController@exportExcelReport');
+//Route::get('new_sms', 'TicketsController@create');
 Route::post('new_ticket', 'TicketsController@store');
 Route::get('tickets/{ticket_id}', 'TicketsController@show');
 Route::get('my_tickets', 'TicketsController@userTickets');
