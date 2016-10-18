@@ -9,11 +9,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                    @include('includes.flash')
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/createaccount') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">Fullname</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
@@ -60,12 +61,31 @@
                             <div class="col-md-6">
                                 <select id="region" type="region" class="form-control" name="region" placeholder="eg: 080xxxxxxxx">
                                 	<option value="">Select Region</option>
-										<option value="sw">South west</option>
+										<option value="abia">Abia State</option>
                                 </select>
 
                                 @if ($errors->has('region'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('region') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
+                            <label for="role" class="col-md-4 control-label">User Role</label>
+
+                            <div class="col-md-6">
+                                <select id="role" type="role" class="form-control" name="role" >
+                                	<option value="">Select User Role</option>
+										<option value="fe">Field Engineer</option>
+                    	<option value="ns">NOC Staff</option>
+                      	<option value="na">NOC Admin</option>
+                                </select>
+
+                                @if ($errors->has('role'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('role') }}</strong>
                                     </span>
                                 @endif
                             </div>

@@ -15,7 +15,11 @@ Route::auth();
 
 Route::get('/', 'HomeController@index');
 
+Route::get('createaccount', 'AdminController@create');
+
+Route::post('createaccount', 'AdminController@store');
 Route::get('new_ticket', 'TicketsController@create');
+Route::get('all_tickets', 'TicketsController@getAllTickets');
 Route::get('download_report', 'TicketsController@exportExcelReport');
 //Route::get('new_sms', 'TicketsController@create');
 Route::post('new_ticket', 'TicketsController@store');

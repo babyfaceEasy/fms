@@ -55,11 +55,19 @@
                         @if (Auth::user()->is_admin)
                             <li><a href="{{ url('admin/tickets') }}">Tickets</a></li>
                             <li><a href="{{ url('new_ticket') }}">Download Reports</a></li>
-                        @else
+                            <li><a href="{{ url('all_tickets') }}">All Tickets</a></li>
                             <li><a href="{{ url('my_tickets') }}">My Trouble Tickets</a></li>
                             <li><a href="{{ url('new_ticket') }}">Open Trouble Ticket</a></li>
                             <li><a href="{{ url('new_sms') }}">Send Bulk SMS</a></li>
                             <li><a href="{{ url('download_report') }}">Download Reports</a></li>
+                            <li><a href="{{ url('createaccount') }}">Add New Staff</a></li>
+                        @else
+
+                          <li><a href="{{ url('all_tickets') }}">All Tickets</a></li>
+                          <li><a href="{{ url('my_tickets') }}">My Trouble Tickets</a></li>
+                          <li><a href="{{ url('new_ticket') }}">Open Trouble Ticket</a></li>
+                          <li><a href="{{ url('new_sms') }}">Send Bulk SMS</a></li>
+                          <li><a href="{{ url('download_report') }}">Download Reports</a></li>
                         @endif
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

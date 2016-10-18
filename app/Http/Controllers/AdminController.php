@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Excel;
 
-class TicketsController extends Controller
+class AdminController extends Controller
 {
 	public function __construct()
 	{
@@ -42,7 +42,7 @@ class TicketsController extends Controller
     {
 
     	$tickets = Ticket::paginate(10);
-		
+
         $categories = Category::all();
 
         return view('tickets.limited', compact('tickets', 'categories'));
@@ -71,9 +71,9 @@ class TicketsController extends Controller
      */
     public function create()
     {
-    	$categories = Category::all();
+    	//$categories = Category::all();
 
-        return view('tickets.create', compact('categories'));
+        return view('auth.register');
     }
 
 		public function exportExcelReport()
@@ -98,54 +98,27 @@ class TicketsController extends Controller
      */
     public function store(Request $request, AppMailer $mailer)
     {
-
-			$ticket = null;
-			$alertMessage = "A ticket with ID: #6JSFY4KYP3 has been opened.";
-
-			if($request['category'] == '1'){
 				$this->validate($request, [
-            'title'     => 'required',
-            'category'  => 'required',
-            'priority'  => 'required',
-						'node_a'		=> 'required',
-						'node_b'		=> 'required'
+            'name'     => 'required',
+            'email'  => 'required',
+            'phone_number'  => 'required',
+						'region'		=> 'required',
+						'role'		=> 'required',
+						'password'		=> 'required'
         ]);
-
-				$ticket = new Ticket([
-            'title'     => $request->input('title'),
-            'user_id'   => Auth::user()->id,
-            'ticket_id' => strtoupper(str_random(10)),
-            'category_id'  => $request->input('category'),
-            'priority'  => $request->input('priority'),
-            'message'   => $request->input('node_a'),
-            'status'    => "Open",
+				$user = new User([
+            'name'     => $request->input('name'),
+            'email'   => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+            'region'  => $request->input('region'),
+            'role'  => $request->input('role'),
+            'phone_number'   => $request->input('phone_number'),
         ]);
-				$ticket->save();
-				$alertMessage = "A transmission ticket with ID: #$ticket->ticket_id has been opened.";
+				$user->save();
+				$alertMessage = "User Account Created";
 				$alertMessage = str_replace(" ","+",$alertMessage);
-				$this->sendSMS(trim($request->user()->phone_number),$alertMessage);
-			}elseif($request['category'] == '2'){
-				$this->validate($request, [
-            'title'     => 'required',
-            'category'  => 'required',
-            'priority'  => 'required',
-        ]);
-			}elseif($request['category'] == '3'){
-				$this->validate($request, [
-            'title'     => 'required',
-            'category'  => 'required',
-            'priority'  => 'required',
-        ]);
-			}else{
-				$this->validate($request, [
-            'title'     => 'required',
-            'category'  => 'required',
-            'priority'  => 'required',
-        ]);
-			}
-        //$mailer->sendTicketInformation(Auth::user(), $ticket);
 
-        return redirect()->back()->with("status", "A ticket with ID: #$ticket->ticket_id has been opened.");
+				return redirect()->back();
     }
 
     /**
