@@ -54,6 +54,7 @@
                     @else
                         @if (Auth::user()->is_admin)
                             <li><a href="{{ url('admin/tickets') }}">Tickets</a></li>
+
                             <li><a href="{{ url('new_ticket') }}">Download Reports</a></li>
                             <li><a href="{{ url('all_tickets') }}">All Tickets</a></li>
                             <li><a href="{{ url('my_tickets') }}">My Trouble Tickets</a></li>
@@ -64,6 +65,7 @@
                         @else
 
                           <li><a href="{{ url('all_tickets') }}">All Tickets</a></li>
+                          <li><a href="{{ url('/createaccount') }}">Create Account</a></li>
                           <li><a href="{{ url('my_tickets') }}">My Trouble Tickets</a></li>
                           <li><a href="{{ url('new_ticket') }}">Open Trouble Ticket</a></li>
                           <li><a href="{{ url('new_sms') }}">Send Bulk SMS</a></li>

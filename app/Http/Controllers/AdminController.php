@@ -73,7 +73,7 @@ class AdminController extends Controller
     {
     	//$categories = Category::all();
 
-        return view('auth.register');
+        return view('auth.createaccount');
     }
 
 		public function exportExcelReport()
@@ -118,7 +118,7 @@ class AdminController extends Controller
 				$alertMessage = "User Account Created";
 				$alertMessage = str_replace(" ","+",$alertMessage);
 
-				return redirect()->back();
+				return redirect("/");
     }
 
     /**

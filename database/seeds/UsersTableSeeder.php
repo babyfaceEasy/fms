@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
             'password'=> bcrypt("administrator"),
             'region' => 'lagos',
             'role' => 'na',
+            'is_admin' =>1,
             'phone_number' => '08055613546',
         ]);
     }
