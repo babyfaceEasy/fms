@@ -45,7 +45,7 @@
                             <label for="phone_number" class="col-md-4 control-label">Phone Number</label>
 
                             <div class="col-md-6">
-                                <input id="phone_number" type="number" class="form-control" name="phone_number" value="{{ old('phone_number') }}">
+                                <input id="phone_number" type="text" class="form-control" name="phone_number" value="{{ old('phone_number') }}">
 
                                 @if ($errors->has('phone_number'))
                                     <span class="help-block">
@@ -59,9 +59,10 @@
                             <label for="region" class="col-md-4 control-label">Select Region</label>
 
                             <div class="col-md-6">
-                                <select id="region" type="region" class="form-control" name="region" placeholder="eg: 080xxxxxxxx">
-                                	<option value="">Select Region</option>
-										<option value="abia">Abia State</option>
+                                <select id="region" type="region" class="form-control" name="region">
+                                @foreach($states as $state)
+                                    <option value="{{$state->state_id}}">{{$state->name}}</option>
+                                @endforeach
                                 </select>
 
                                 @if ($errors->has('region'))
@@ -78,7 +79,7 @@
                             <div class="col-md-6">
                                 <select id="role" type="role" class="form-control" name="role" >
                                 	<option value="">Select User Role</option>
-										<option value="fe">Field Engineer</option>
+										<option value="ne">Network Engineer</option>
                     	<option value="ns">NOC Staff</option>
                       	<option value="na">NOC Admin</option>
                                 </select>

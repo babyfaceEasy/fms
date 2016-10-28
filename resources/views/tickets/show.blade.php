@@ -7,13 +7,13 @@
 		<div class="col-md-10 col-md-offset-1">
 	        <div class="panel panel-default">
 	        	<div class="panel-heading">
-	        		#{{ $ticket->ticket_id }} - {{ $ticket->title }}
+	        	{{ $ticket->title }} ({{ $ticket->ticket_id }})
 	        	</div>
 
 	        	<div class="panel-body">
 	        		@include('includes.flash')
 	        		
-	        		<div class="ticket-info">
+	        		<div class="ticket-info clear-fix">
 	        			<p>{{ $ticket->message }}</p>
 		        		<p>Categry: {{ $category->name }}</p>
 		        		<p>
@@ -24,6 +24,16 @@
     					@endif
 		        		</p>
 		        		<p>Created on: {{ $ticket->created_at->diffForHumans() }}</p>
+
+		        		@if( $ticket->status === "Open" && (Auth::user()->role === "ns" || Auth::user()->role === "na"))
+		        		<p class="">
+		        			<a href="{{route('close.ticket', $ticket->id)}}" class="btn  btn-danger">
+		        				Close Ticket
+		        			</a>
+		        		</p>
+		        		@endif
+
+		        		<div class="clear-fix"></div>
 	        		</div>
 
 	        		<hr>
@@ -43,6 +53,27 @@
 	        			@endforeach
 	        		</div>
 
+	        		@if($ticket->status === "Closed")
+	        		<div class="resolution">
+	        			<p class="alert alert-success">
+	        				{{$ticket->resolution}}
+	        				<br/>
+
+	        				<i style="font-size: 12px; ">
+	        				<?php
+	        				echo date("F jS, Y", strtotime($ticket->updated_at));
+	        				?>
+	        				</i>
+	        				
+	        			</p>
+	        		</div>
+	        		@endif
+
+	        		<hr>
+	                <hr>
+
+	                @if($ticket->status !== "Closed")
+
 	        		<div class="comment-form">
 		        		<form action="{{ url('comment') }}" method="POST" class="form">
 		        			{!! csrf_field() !!}
@@ -60,9 +91,10 @@
 	                        </div>
 
 	                        <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Add update</button>
 	                        </div>
 		        		</form>
+		        		@endif
 	        	</div>
 	        </div>
 	    </div>

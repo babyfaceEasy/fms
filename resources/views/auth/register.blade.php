@@ -78,7 +78,7 @@
                             <div class="col-md-6">
                                 <select id="role" type="role" class="form-control" name="role" >
                                 	<option value="">Select User Role</option>
-										<option value="fe">Field Engineer</option>
+										<option value="fe">Network Engineer</option>
                     	<option value="ns">NOC Staff</option>
                       	<option value="na">NOC Admin</option>
                                 </select>

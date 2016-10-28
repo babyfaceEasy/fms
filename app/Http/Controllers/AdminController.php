@@ -2,14 +2,22 @@
 
 namespace App\Http\Controllers;
 
+//models
 use App\User;
 use App\Ticket;
 use App\Category;
+use App\State;
+
 use App\Http\Requests;
 use App\Mailers\AppMailer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+//vendors
 use Excel;
+
+//facades
+use Session;
 
 class AdminController extends Controller
 {
@@ -73,22 +81,24 @@ class AdminController extends Controller
     {
     	//$categories = Category::all();
 
-        return view('auth.createaccount');
+        $states = State::all();
+
+        return view('auth.createaccount', compact('states'));
     }
 
-		public function exportExcelReport()
-		{
-			//add datetime stamp
-			Excel::create('HOC_Report', function($excel) {
+	public function exportExcelReport()
+	{
+		//add datetime stamp
+		Excel::create('HOC_Report', function($excel) {
 
-			    $excel->sheet('Sheetname', function($sheet) {
-						  $tickets = Ticket::where('user_id', Auth::user()->id)->get();
-			        $sheet->fromArray($tickets);
+		    $excel->sheet('Sheetname', function($sheet) {
+					  $tickets = Ticket::where('user_id', Auth::user()->id)->get();
+		        $sheet->fromArray($tickets);
 
-			    });
+		    });
 
-			})->export('xls');
-		}
+		})->export('xls');
+	}
 
     /**
      * Store a newly created ticket in database.
@@ -98,15 +108,15 @@ class AdminController extends Controller
      */
     public function store(Request $request, AppMailer $mailer)
     {
-				$this->validate($request, [
+			$this->validate($request, [
             'name'     => 'required',
             'email'  => 'required',
             'phone_number'  => 'required',
-						'region'		=> 'required',
-						'role'		=> 'required',
-						'password'		=> 'required'
+			'region'		=> 'required',
+			'role'		=> 'required',
+			'password'		=> 'required'
         ]);
-				$user = new User([
+			$user = new User([
             'name'     => $request->input('name'),
             'email'   => $request->input('email'),
             'password' => bcrypt($request->input('password')),
@@ -116,9 +126,11 @@ class AdminController extends Controller
         ]);
 				$user->save();
 				$alertMessage = "User Account Created";
-				$alertMessage = str_replace(" ","+",$alertMessage);
+				//$alertMessage = str_replace(" ","+",$alertMessage);
 
-				return redirect("/");
+                Session::flash('suc_msg', $alertMessage);
+
+				return redirect()->route('createacct.get');
     }
 
     /**
@@ -159,20 +171,20 @@ class AdminController extends Controller
         return redirect()->back()->with("status", "The ticket has been closed.");
     }
 
-		public function sendSMS($to,$message){
-			$message = str_replace("#","",$message);
-			$url = "http://www.smslive247.com/http/index.aspx?cmd=sendquickmsg&owneremail=bayorasunmo@gmail.com&subacct=FMS&subacctpwd=bayorfms&message=".$message."&sender=GLONOC&sendto=".trim($to)."&msgtype=0";
-			/* call the URL */
+	public function sendSMS($to,$message){
+		$message = str_replace("#","",$message);
+		$url = "http://www.smslive247.com/http/index.aspx?cmd=sendquickmsg&owneremail=bayorasunmo@gmail.com&subacct=FMS&subacctpwd=bayorfms&message=".$message."&sender=GLONOC&sendto=".trim($to)."&msgtype=0";
+		/* call the URL */
 
-			if ($f = @fopen($url, "r"))  {
-				 $answer = fgets($f, 255);
-				 if (substr($answer, 0, 1) == "+") {
+		if ($f = @fopen($url, "r"))  {
+			 $answer = fgets($f, 255);
+			 if (substr($answer, 0, 1) == "+") {
+				   echo $answer;
+				 }  else  {
 					   echo $answer;
-					 }  else  {
-						   echo $answer;
-					 }
-					 }  else  {
-						 return false;
-					 }
-		}
+				 }
+				 }  else  {
+					 return false;
+				 }
+	}
 }

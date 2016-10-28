@@ -19,11 +19,32 @@
                             <label for="title" class="col-md-4 control-label">Title</label>
 
                             <div class="col-md-6">
+                            <a href="{{route('test.sms')}}">
+                            	Let's Go
+                            </a>
                                 <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}">
 
                                 @if ($errors->has('title'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('title') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('state') ? ' has-error' : '' }}">
+                            <label for="state" class="col-md-4 control-label">Region / Department</label>
+
+                            <div class="col-md-6">
+                                <select multiple="true" id="state" type="state" class="form-control" name="state[]">
+                                	@foreach ($states as $state)
+										<option value="{{ $state->state_id }}">{{ $state->name }}</option>
+                                	@endforeach
+                                </select>
+
+                                @if ($errors->has('state'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('state') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -246,6 +267,12 @@
 		                                @endif
 		                            </div>
 		                        </div>
+
+		                        <div class="col-md-6 col-md-offset-4">
+		                                <button type="submit" class="btn btn-primary btn-block">
+		                                    <i class="fa fa-btn fa-ticket"></i> Open Base Station Switch Trouble Ticket
+		                                </button>
+		                            </div>
 												</div>
 												<div id="ipnetwork" class="hidden_info">
 													<div class="form-group">
@@ -304,6 +331,11 @@
 		                                @endif
 		                            </div>
 		                        </div>
+		                        <div class="col-md-6 col-md-offset-4">
+		                                <button type="submit" class="btn btn-primary btn-block">
+		                                    <i class="fa fa-btn fa-ticket"></i> Open IP Network Trouble Ticket
+		                                </button>
+		                            </div>
 												</div>
 
 

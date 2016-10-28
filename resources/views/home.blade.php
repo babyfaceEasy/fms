@@ -6,7 +6,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
+            @if(isset($info) && $info == true)
+                <div class="alert alert-info" role="alert">
+                    <strong>Heads Up ! </strong>You need to change your password. Do that here <a href="{{route('chngpass.get')}}" class="alert-link">Change password.</a>
+                </div>
+            @endif
             <div class="panel panel-default">
+                
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
