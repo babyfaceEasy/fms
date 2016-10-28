@@ -94,6 +94,24 @@ class TicketsController extends Controller
 		})->export('xls');
 	}
 
+    public function exportExcelTickRep($id)
+    {
+        
+        Excel::create('HOC_Report', function($excel){
+            $ticket = Ticket::find($id);
+            $comments = $ticket->comments();
+            $excel->setTitle($ticket->title.' - #'.$ticket->_id);
+            
+            $excel->sheet($ticket->ticket_id, function($sheet){
+                $ticket = Ticket::find($id);
+                $comments = $ticket->comments();
+
+                $sheet->fromArray($comments);
+            });
+
+        })->export('xls');
+    }
+
     /**
      * Store a newly created ticket in database.
      *
@@ -500,21 +518,40 @@ class TicketsController extends Controller
             'region' => 'required'
         ]);
 
-        $ticket = Ticket::find($request->input('id'));
-        $ticket = json_encode($request->input('region'));
+        $ticket = Ticket::find($request->input('ticket_id'));
+        $ticket->region = json_encode($request->input('region'));
         $ticket->save();
 
         //send the sms again her by selectin the whole data again
-        $ticket = Ticket::find($request->input('id'));
+        $ticket = Ticket::find($request->input('ticket_id'));
         $message = [
-            $ticket->title,
-            $ticket->user_id,
             $ticket->ticket_id,
-            $ticket->category_id,
+            $ticket->title,
+            $ticket->category->name,
             $ticket->priority,
-            $ticket->message,
-            $ticket->status
+            $ticket->status,
         ];
-    }
+
+        //this is to get the numbers
+        $state_ids = $request->input('region');
+
+        //this is to keep only unique ids
+        $state_ids = array_unique($state_ids);
+        $phone_nos = array();
+
+        foreach ($state_ids as $state_id) {
+            $users = User::where('region', $state_id)->get();
+            foreach ($users as $user) {
+                #dump($user->phone_number);
+                array_push($phone_nos, $user->phone_number);
+            }
+        }
+
+        //dump($message);
+        //dd($phone_nos);
+
+        //when u fix the sms part, call the function here with 
+        //the required values
+    }//end of escalateViaSms
 
 }//end of class

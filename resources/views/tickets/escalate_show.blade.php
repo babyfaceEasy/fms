@@ -16,7 +16,7 @@
 	                @if($ticket->status !== "Closed")
 
 	        		<div class="comment-form">
-		        		<form class="form-horizontal" action="{{ url('comment') }}" method="POST" class="form">
+		        		<form class="form-horizontal" action="{{ route('escalate.send') }}" method="POST" class="form">
 		        			{!! csrf_field() !!}
 
 		        			<input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
@@ -25,9 +25,12 @@
                             <label for="region" class="col-md-4 control-label">Regions / Dept:</label>
 
                             <div class="col-md-6">
-                                <select class="form-control" name="region" id="region" multiple="true">
+                                <select class="form-control" name="region[]" id="region" multiple="true">
                                 	<?php
                                 	$regions = json_decode($ticket->region, true);
+
+                                	if(!is_array($regions))
+                                		$regions = [$regions];
                                 	?>
 
                                 	@foreach($states as $state)

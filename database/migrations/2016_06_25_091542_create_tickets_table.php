@@ -22,6 +22,17 @@ class CreateTicketsTable extends Migration
             $table->text('message');
             $table->string('status');
             $table->timestamps();
+            $table->string('nodeA', 100);
+            $table->string('nodeB', 100);
+            $table->string('vendor', 100);
+            $table->string('site_id', 100);
+            $table->string('bsc');
+            $table->string('location');
+            $table->string('region');
+            $table->string('time_occurence');
+            $table->string('cause_of_failure');
+            $table->text('impact');
+            $table->text('resolution');
         });
     }
 

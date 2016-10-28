@@ -32,6 +32,7 @@ Route::get('download_report', 'TicketsController@exportExcelReport');
 //escalate
 Route::get('newsms_list', 'TicketsController@escalateListData')->name('escalate.data');
 Route::get('escalate_show/{id}', 'TicketsController@escalateShow')->name('escalate.show');
+Route::post('escalate_via_sms', 'TicketsController@escalateViaSms')->name('escalate.send');
 //end escalate
 Route::get('new_sms', 'TicketsController@escalateList');
 Route::post('new_ticket', 'TicketsController@store');
@@ -50,4 +51,8 @@ Route::get('/chngpass', 'HomeController@chngePass')->name('chngpass.get');
 Route::post('/chngpass', 'HomeController@changePass')->name('chngpass.post');
 
 Route::get('/test_sms', 'TicketsController@mySendSMS')->name('test.sms');
+
+//this is for the reportcontroller
+Route::get('reports', 'ReportController@index')->name('report.index');
+Route::get('reports_data', 'ReportController@allData')->name('report.data');
 
