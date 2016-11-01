@@ -162,6 +162,7 @@ return [
 
         //entrust
         Zizaco\Entrust\EntrustServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class
 
     ],
@@ -213,6 +214,7 @@ return [
 
         //entrust facades
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Datatables' =>Yajra\Datatables\Facades\Datatables::class,
 
     ],
