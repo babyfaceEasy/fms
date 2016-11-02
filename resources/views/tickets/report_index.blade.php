@@ -17,25 +17,25 @@
 		        				<td>
 		        					<a href="{{route('report.test', ['t', 'o'])}}" class="btn btn-danger">Open Tickets</a>
 		        					
-		        					<a href="#" class="btn btn-success">Closed Tickets</a>
+		        					<a href="{{route('report.test', ['t', 'c'])}}" class="btn btn-success">Closed Tickets</a>
 		        				</td>
 		        			</tr>
 
 		        			<tr>
 		        				<td style="background-color: #eee">Base Station Switch</td>
 		        				<td>
-		        					<a href="#" class="btn btn-danger">Open Tickets</a>
+		        					<a href="{{route('report.test', ['b', 'o'])}}" class="btn btn-danger">Open Tickets</a>
 		        					
-		        					<a href="#" class="btn btn-success">Closed Tickets</a>
+		        					<a href="{{route('report.test', ['b', 'c'])}}" class="btn btn-success">Closed Tickets</a>
 		        				</td>
 		        			</tr>
 
 		        			<tr>
 		        				<td style="background-color: #eee">IP Network</td>
 		        				<td>
-		        					<a href="#" class="btn btn-danger">Open Tickets</a>
+		        					<a href="{{route('report.test', ['i', 'o'])}}" class="btn btn-danger">Open Tickets</a>
 		        					
-		        					<a href="#" class="btn btn-success">Closed Tickets</a>
+		        					<a href="{{route('report.test', ['i', 'c'])}}" class="btn btn-success">Closed Tickets</a>
 		        				</td>
 		        			</tr>
 		        		</table>

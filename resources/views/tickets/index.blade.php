@@ -19,12 +19,11 @@
 		        					<th>Title</th>
 		        					<th>Status</th>
 		        					<th>Last Updated</th>
-		        					<th style="text-align:center" colspan="2">Actions</th>
+		        					<th style="text-align:center">Actions</th>
 		        				</tr>
 		        			</thead>
 		        		
 		        		</table>
-		        	@endif
 	        	</div>
 	        </div>
 	    </div>

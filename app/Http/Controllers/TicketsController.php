@@ -498,6 +498,7 @@ class TicketsController extends Controller
         $ticket = Ticket::find($request->input('ticket_id'));
         $ticket->resolution = $request->input('resolution');
         $ticket->status = "Closed";
+        $ticket->updated_at =  date('Y-m-d H:i:s') ;
         $ticket->save();
 
         Session::flash('suc_msg', ' Ticket with '. $ticket->ticket_id. ' has been closed.');

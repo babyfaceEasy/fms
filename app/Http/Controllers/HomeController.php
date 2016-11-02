@@ -66,6 +66,7 @@ class HomeController extends Controller
         $info = false;
         if($auth->created_at == $auth->updated_at)
             $info = true;
-        return view('home')->with('info', $info);
+        //return view('home')->with('info', $info);
+        return view('tickets.index')->with('info', $info);
     }
 }

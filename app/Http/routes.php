@@ -55,8 +55,5 @@ Route::get('/test_sms', 'TicketsController@sendSMS')->name('test.sms');
 //this is for the reportcontroller
 Route::get('reports', 'ReportController@index')->name('report.index');
 Route::get('reports_data', 'ReportController@allData')->name('report.data');
-<<<<<<< HEAD
-Route::get('reports_test/{type}/{mode}', 'ReportController@exportExcel')->name('report.test');
 
-=======
->>>>>>> f49f298a15ccacc39aee0f67279c3f5b53d56d9f
+Route::get('reports_test/{type}/{mode}', 'ReportController@exportExcel')->name('report.test');

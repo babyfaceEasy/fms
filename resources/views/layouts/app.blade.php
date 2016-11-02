@@ -43,7 +43,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                  <div alt="Brand">  <!--<img alt="Brand" src="/images/logo.gif" height="30px">--> FMS Network Operation Center</div>
+                  <div alt="Brand">  <!--<img alt="Brand" src="/images/logo.gif" height="30px">--> Fault Management System Network Operation Center</div>
                 </a>
             </div>
 
@@ -76,7 +76,7 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="{{ url('download_report') }}">Download Reports</a></li>
-                                    <li><a href="{{ url('reports') }}">All Reports</a></li>
+                                    <!--<li><a href="{{ url('reports') }}">All Reports</a></li>-->
                                 </ul>
                             </li>
                             
