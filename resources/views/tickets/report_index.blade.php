@@ -7,42 +7,40 @@
 		<div class="col-md-10 col-md-offset-1">
 	        <div class="panel panel-default">
 	        	<div class="panel-heading">
-	        		<i class="fa fa-ticket">Closed Tickets</i>
+	        		<i class="fa fa-ticket">Reports</i>
 	        	</div>
 
 	        	<div class="panel-body">
-		        		<table class="table" id="tickets">
-		        			<thead>
-		        				<tr>
-		        					<th>Ticket ID</th>
-		        					<th>Title</th>
-		        					<th>Status</th>
-		        					<th style="text-align:center">Actions</th>
-		        				</tr>
-		        			</thead>
-		        		
+		        		<table class="table">
+		        			<tr>
+		        				<td style="background-color: #eee">Transmission</td>
+		        				<td>
+		        					<a href="{{route('report.test', ['t', 'o'])}}" class="btn btn-danger">Open Tickets</a>
+		        					
+		        					<a href="#" class="btn btn-success">Closed Tickets</a>
+		        				</td>
+		        			</tr>
+
+		        			<tr>
+		        				<td style="background-color: #eee">Base Station Switch</td>
+		        				<td>
+		        					<a href="#" class="btn btn-danger">Open Tickets</a>
+		        					
+		        					<a href="#" class="btn btn-success">Closed Tickets</a>
+		        				</td>
+		        			</tr>
+
+		        			<tr>
+		        				<td style="background-color: #eee">IP Network</td>
+		        				<td>
+		        					<a href="#" class="btn btn-danger">Open Tickets</a>
+		        					
+		        					<a href="#" class="btn btn-success">Closed Tickets</a>
+		        				</td>
+		        			</tr>
 		        		</table>
 	        	</div>
 	        </div>
 	    </div>
 	</div>
 @endsection
-
-@push('scripts')
-<script>
-$(function() {
-    $('#tickets').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: '{!! route('report.data') !!}',
-        columns: [
-            { data: 'ticket_id', name: 'ticket_id' },
-            { data: 'title', name: 'title' },
-            { data: 'status', name: 'status' },
-            { data: 'action', name: 'action', sortable: 'false', searcheable: 'false'}
-        ]
-    });
-});
-</script>
-@endpush
-

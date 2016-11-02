@@ -358,7 +358,7 @@ class TicketsController extends Controller
 
         $url = "http://www.smslive247.com/http/index.aspx?cmd=sendquickmsg&owneremail=bayorasunmo@gmail.com&subacct=FMS&subacctpwd=bayorfms&message=".$message."&sender=GLONOC&sendto=".$to."&msgtype=0";
 
-        $url = "http://www.smslive247.com/http/index.aspx?cmd=sendquickmsg&owneremail=bayorasunmo@gmail.com&subacct=FMS&subacctpwd=bayorfms&message=Am testing&sender=GLONOC&sendto=09097694139&msgtype=0";
+        $url = "http://www.smslive247.com/http/index.aspx?cmd=sendquickmsg&owneremail=bayorasunmo@gmail.com&subacct=FMS&subacctpwd=bayorfms&message=Am testing&sender=NOC&sendto=09097694139&msgtype=0";
 
         dd(( $url));
 

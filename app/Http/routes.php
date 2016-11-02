@@ -55,4 +55,5 @@ Route::get('/test_sms', 'TicketsController@mySendSMS')->name('test.sms');
 //this is for the reportcontroller
 Route::get('reports', 'ReportController@index')->name('report.index');
 Route::get('reports_data', 'ReportController@allData')->name('report.data');
+Route::get('reports_test/{type}/{mode}', 'ReportController@exportExcel')->name('report.test');
 
