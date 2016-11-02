@@ -50,10 +50,13 @@ Route::post('comment', 'CommentsController@postComment');
 Route::get('/chngpass', 'HomeController@chngePass')->name('chngpass.get');
 Route::post('/chngpass', 'HomeController@changePass')->name('chngpass.post');
 
-Route::get('/test_sms', 'TicketsController@mySendSMS')->name('test.sms');
+Route::get('/test_sms', 'TicketsController@sendSMS')->name('test.sms');
 
 //this is for the reportcontroller
 Route::get('reports', 'ReportController@index')->name('report.index');
 Route::get('reports_data', 'ReportController@allData')->name('report.data');
+<<<<<<< HEAD
 Route::get('reports_test/{type}/{mode}', 'ReportController@exportExcel')->name('report.test');
 
+=======
+>>>>>>> f49f298a15ccacc39aee0f67279c3f5b53d56d9f

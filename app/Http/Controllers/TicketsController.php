@@ -45,7 +45,7 @@ class TicketsController extends Controller
     {
 
     	$tickets = Ticket::paginate(10);
-		
+
         $categories = Category::all();
 
         return view('tickets.limited', compact('tickets', 'categories'));
@@ -96,12 +96,12 @@ class TicketsController extends Controller
 
     public function exportExcelTickRep($id)
     {
-        
+
         Excel::create('HOC_Report', function($excel){
             $ticket = Ticket::find($id);
             $comments = $ticket->comments();
             $excel->setTitle($ticket->title.' - #'.$ticket->_id);
-            
+
             $excel->sheet($ticket->ticket_id, function($sheet){
                 $ticket = Ticket::find($id);
                 $comments = $ticket->comments();
@@ -132,7 +132,7 @@ class TicketsController extends Controller
             $state_ids = array_unique($state_ids);
 
             //dd(json_decode($state_ids, true));
-            // output format: 
+            // output format:
             /*array:2 [▼
                   0 => "15"
                   1 => "25"
@@ -223,7 +223,7 @@ class TicketsController extends Controller
         'status'    => "Open",
         ]);
 
-        
+
         $message = [
             $ticket->ticket_id,
             $ticket->title,
@@ -269,7 +269,7 @@ class TicketsController extends Controller
         }
         die();*/
 
-        //the message is to contain everything in the 
+        //the message is to contain everything in the
         //then we should send to everybody selected wen the trouble ticket is made
         //it should send the trouble ticket ID.
 
@@ -316,33 +316,38 @@ class TicketsController extends Controller
         return redirect()->back()->with("status", "The ticket has been closed.");
     }
 
+
+		//always use this function to send sms... pass in to: and Message:
 	public function sendSMS($to = null,$message = null){
-        
+
         /*$to = trim(implode(",", $to));
-		#$message = str_replace("#","",$message);
+				#$message = str_replace("#","",$message);
         $message = trim(implode(",", $message));
         */
 
-        $to = '09097694139';
-        $message = 'Am testing';
-		$url = "http://www.smslive247.com/http/index.aspx?cmd=sendquickmsg&owneremail=bayorasunmo@gmail.com&subacct=FMS&subacctpwd=bayorfms&message=".$message."&sender=GLONOC&sendto=".trim($to)."&msgtype=0";
-		/* call the URL */
+        //$to = '09050105033';
+        //$message = 'Am testing';
+
+				//URL must never have space, replace all space with +
+				$message = str_replace(" ","+",$message);
+				$url = "http://www.smslive247.com/http/index.aspx?cmd=sendquickmsg&owneremail=bayorasunmo@gmail.com&subacct=FMS&subacctpwd=bayorfms&message=".$message."&sender=GLONOC&sendto=".trim($to)."&msgtype=0";
+				/* call the URL */
 
         //dd($url);
         dd(fopen($url, "r"));
 
-		if ($f = @fopen($url, "r"))  
+		if ($f = @fopen($url, "r"))
         {
     	$answer = fgets($f, 255);
-        	 if (substr($answer, 0, 1) == "+") 
+        	 if (substr($answer, 0, 1) == "+")
              {
         		   echo $answer;
-    		 }  
-             else  
+    		 }
+             else
              {
     			   echo $answer;
     		 }
-        }  else  
+        }  else
         {
             return "error";
         }
@@ -399,7 +404,7 @@ class TicketsController extends Controller
             return '<span class="label label-danger">'.$status->status.'</span>';
         })
         ->addColumn('action', function($row){
-            return '<a href="'.route('ticket.show', $row->ticket_id).'" class="btn btn-info btn-xs">More</a> 
+            return '<a href="'.route('ticket.show', $row->ticket_id).'" class="btn btn-info btn-xs">More</a>
             ';
         })
         ->removeColumn('id')
@@ -436,7 +441,7 @@ class TicketsController extends Controller
             return '<span class="label label-danger">'.$status->status.'</span>';
         })
         ->addColumn('action', function($row){
-            return '<a href="'.route('ticket.show', $row->ticket_id).'" class="btn btn-info btn-xs">More</a> 
+            return '<a href="'.route('ticket.show', $row->ticket_id).'" class="btn btn-info btn-xs">More</a>
             ';
         })
         ->removeColumn('id')
@@ -444,7 +449,7 @@ class TicketsController extends Controller
         ->make(true);
     }
 
-    //this is to get the tickets that are 
+    //this is to get the tickets that are
     //open so u can escalate
     public function escalateListData()
     {
@@ -471,7 +476,7 @@ class TicketsController extends Controller
             return '<span class="label label-danger">'.$status->status.'</span>';
         })
         ->addColumn('action', function($row){
-            return '<a href="'.route('escalate.show', $row->id).'" class="btn btn-info btn-xs">Next</a> 
+            return '<a href="'.route('escalate.show', $row->id).'" class="btn btn-info btn-xs">Next</a>
             ';
         })
         ->removeColumn('id')
@@ -497,7 +502,7 @@ class TicketsController extends Controller
 
         Session::flash('suc_msg', ' Ticket with '. $ticket->ticket_id. ' has been closed.');
         return redirect()->route('all.tickets');
-    } 
+    }
 
     public function escalateList()
     {
@@ -550,7 +555,7 @@ class TicketsController extends Controller
         //dump($message);
         //dd($phone_nos);
 
-        //when u fix the sms part, call the function here with 
+        //when u fix the sms part, call the function here with
         //the required values
     }//end of escalateViaSms
 
