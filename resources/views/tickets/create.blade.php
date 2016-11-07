@@ -135,43 +135,43 @@
 		                                @endif
 		                            </div>
 		                        </div>
-														<div class="form-group{{ $errors->has('time_of_occurence') ? ' has-error' : '' }}">
-		                            <label for="time_of_occurence" class="col-md-4 control-label">Time of occurence</label>
+														<div class="form-group{{ $errors->has('time_of_occurence1') ? ' has-error' : '' }}">
+		                            <label for="time_of_occurence1" class="col-md-4 control-label">Time of occurence</label>
 
 		                            <div class="col-md-6">
-		                                <input id="time_of_occurence" type="datetime" class="form-control" name="time_of_occurence" value="{{ old('node_a') }}">
+		                                <input id="time_of_occurence1" type="datetime" class="form-control" name="time_of_occurence1" value="{{ old('time_of_occurence1') }}">
 
-		                                @if ($errors->has('time_of_occurence'))
+		                                @if ($errors->has('time_of_occurence1'))
 		                                    <span class="help-block">
-		                                        <strong>{{ $errors->first('time_of_occurence') }}</strong>
+		                                        <strong>{{ $errors->first('time_of_occurence1') }}</strong>
 		                                    </span>
 		                                @endif
 		                            </div>
 		                        </div>
-														<div class="form-group{{ $errors->has('cause_of_failure') ? ' has-error' : '' }}">
-		                            <label for="cause_of_failure" class="col-md-4 control-label">Cause of failure</label>
+														<div class="form-group{{ $errors->has('cause_of_failure1') ? ' has-error' : '' }}">
+		                            <label for="cause_of_failure1" class="col-md-4 control-label">Cause of failure</label>
 
 		                            <div class="col-md-6">
-		                                <input id="cause_of_failure" type="text" class="form-control" name="cause_of_failure" value="{{ old('cause_of_failure') }}">
+		                                <input id="cause_of_failure1" type="text" class="form-control" name="case_of_failure1" value="{{ old('cause_of_failure1') }}">
 
-		                                @if ($errors->has('cause_of_failure'))
+		                                @if ($errors->has('cause_of_failure1'))
 		                                    <span class="help-block">
-		                                        <strong>{{ $errors->first('cause_of_failure') }}</strong>
+		                                        <strong>{{ $errors->first('cause_of_failure1') }}</strong>
 		                                    </span>
 		                                @endif
 		                            </div>
 		                        </div>
 
-														<div id="impact"  class="form-group{{ $errors->has('impact') ? ' has-error' : '' }} ">
-		                            <label for="impact" class="col-md-4 control-label">Impact</label>
+														<div id="impact1"  class="form-group{{ $errors->has('impact1') ? ' has-error' : '' }} ">
+		                            <label for="impact1" class="col-md-4 control-label">Impact</label>
 
 		                            <div class="col-md-6">
-		                                <textarea rows="10" id="impact" class="form-control" name="impact"></textarea>
+		                                <textarea rows="10" id="impact1" class="form-control" name="impact1"></textarea>
 
-		                                @if ($errors->has('impact'))
+		                                @if ($errors->has('impact1'))
 
 		                                    <span class="help-block">
-		                                        <strong>{{ $errors->first('impact') }}</strong>
+		                                        <strong>{{ $errors->first('impact1') }}</strong>
 		                                    </span>
 		                                @endif
 		                            </div>
@@ -193,7 +193,7 @@
 		                            <label for="site_id" class="col-md-4 control-label">Site ID</label>
 
 		                            <div class="col-md-6">
-		                                <input id="node_a" type="text" class="form-control" name="site_id" value="{{ old('site_id') }}">
+		                                <input id="site_id" type="text" class="form-control" name="site_id" value="{{ old('site_id') }}">
 
 		                                @if ($errors->has('site_id'))
 		                                    <span class="help-block">
@@ -202,7 +202,7 @@
 		                                @endif
 		                            </div>
 		                        </div>
-														<div class="form-group{{ $errors->has('region') ? ' has-error' : '' }}">
+														<!--<div class="form-group{{ $errors->has('region') ? ' has-error' : '' }}">
 		                            <label for="node_a" class="col-md-4 control-label">Region</label>
 
 		                            <div class="col-md-6">
@@ -214,55 +214,55 @@
 		                                    </span>
 		                                @endif
 		                            </div>
-		                        </div>
-														<div class="form-group{{ $errors->has('node_a') ? ' has-error' : '' }}">
-		                            <label for="node_a" class="col-md-4 control-label">BSC/RNC</label>
+		                        </div>-->
+														<div class="form-group{{ $errors->has('bsc') ? ' has-error' : '' }}">
+		                            <label for="bsc" class="col-md-4 control-label">BSC/RNC</label>
 
 		                            <div class="col-md-6">
-		                                <input id="node_a" type="text" class="form-control" name="bsc" value="{{ old('node_a') }}">
+		                                <input id="bsc" type="text" class="form-control" name="bsc" value="{{ old('bsc') }}">
 
-		                                @if ($errors->has('node_a'))
+		                                @if ($errors->has('bsc'))
 		                                    <span class="help-block">
-		                                        <strong>{{ $errors->first('node_a') }}</strong>
+		                                        <strong>{{ $errors->first('bsc') }}</strong>
 		                                    </span>
 		                                @endif
 		                            </div>
 		                        </div>
-														<div class="form-group{{ $errors->has('node_a') ? ' has-error' : '' }}">
-		                            <label for="node_a" class="col-md-4 control-label">Time of occurence</label>
+														<div class="form-group{{ $errors->has('time_of_occurence2') ? ' has-error' : '' }}">
+		                            <label for="time_of_occurence2" class="col-md-4 control-label">Time of occurence</label>
 
 		                            <div class="col-md-6">
-		                                <input id="node_a" type="datetime" class="form-control" name="time_of_occurence" value="{{ old('node_a') }}">
+		                                <input id="time_of_occurence2" type="datetime" class="form-control" name="time_of_occurence2" value="{{ old('time_of_occurence2') }}">
 
-		                                @if ($errors->has('node_a'))
+		                                @if ($errors->has('time_of_occurence2'))
 		                                    <span class="help-block">
-		                                        <strong>{{ $errors->first('node_a') }}</strong>
+		                                        <strong>{{ $errors->first('time_of_occurence2') }}</strong>
 		                                    </span>
 		                                @endif
 		                            </div>
 		                        </div>
-														<div class="form-group{{ $errors->has('node_a') ? ' has-error' : '' }}">
-		                            <label for="node_a" class="col-md-4 control-label">Cause of failure</label>
+														<div class="form-group{{ $errors->has('cause_of_failure2') ? ' has-error' : '' }}">
+		                            <label for="cause_of_failure2" class="col-md-4 control-label">Cause of failure</label>
 
 		                            <div class="col-md-6">
-		                                <input id="node_a" type="text" class="form-control" name="cause_of_failure" value="{{ old('node_a') }}">
+		                                <input id="cause_of_failure2" type="text" class="form-control" name="cause_of_failure2" value="{{ old('cause_of_failure2') }}">
 
-		                                @if ($errors->has('node_a'))
+		                                @if ($errors->has('cause_of_failure2'))
 		                                    <span class="help-block">
-		                                        <strong>{{ $errors->first('node_a') }}</strong>
+		                                        <strong>{{ $errors->first('cause_of_failure2') }}</strong>
 		                                    </span>
 		                                @endif
 		                            </div>
 		                        </div>
-														<div id="message"  class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
-		                            <label for="message" class="col-md-4 control-label">Impact</label>
+														<div id="impact2"  class="form-group{{ $errors->has('impact2') ? ' has-error' : '' }}">
+		                            <label for="impact2" class="col-md-4 control-label">Impact</label>
 
 		                            <div class="col-md-6">
-		                                <textarea rows="10" id="message" class="form-control" name="message"></textarea>
+		                                <textarea rows="10" id="impact2" class="form-control" name="impact2"></textarea>
 
-		                                @if ($errors->has('message'))
+		                                @if ($errors->has('impact2'))
 		                                    <span class="help-block">
-		                                        <strong>{{ $errors->first('message') }}</strong>
+		                                        <strong>{{ $errors->first('impact2') }}</strong>
 		                                    </span>
 		                                @endif
 		                            </div>
@@ -278,55 +278,55 @@
 													<div class="form-group">
 														<span class="col-md-offset-4 text text-muted" style="padding-left:20px;">Ip Network</span>
 													</div>
-														<div class="form-group{{ $errors->has('node_a') ? ' has-error' : '' }}">
-		                            <label for="node_a" class="col-md-4 control-label">Location</label>
+														<div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
+		                            <label for="location" class="col-md-4 control-label">Location</label>
 
 		                            <div class="col-md-6">
-		                                <input id="node_a" type="text" class="form-control" name="location" value="{{ old('node_a') }}">
+		                                <input id="location" type="text" class="form-control" name="location" value="{{ old('location') }}">
 
-		                                @if ($errors->has('node_a'))
+		                                @if ($errors->has('location'))
 		                                    <span class="help-block">
-		                                        <strong>{{ $errors->first('node_a') }}</strong>
+		                                        <strong>{{ $errors->first('location') }}</strong>
 		                                    </span>
 		                                @endif
 		                            </div>
 		                        </div>
-														<div class="form-group{{ $errors->has('node_a') ? ' has-error' : '' }}">
+														<div class="form-group{{ $errors->has('time_of_occurence3') ? ' has-error' : '' }}">
 		                            <label for="node_a" class="col-md-4 control-label">Time of occurence</label>
 
 		                            <div class="col-md-6">
-		                                <input id="node_a" type="datetime" class="form-control" name="time_of_occurence" value="{{ old('node_a') }}">
+		                                <input id="time_of_occurence3" type="datetime" class="form-control" name="time_of_occurence3" value="{{ old('time_of_occurence3') }}">
 
-		                                @if ($errors->has('node_a'))
+		                                @if ($errors->has('time_of_occurence3'))
 		                                    <span class="help-block">
-		                                        <strong>{{ $errors->first('node_a') }}</strong>
+		                                        <strong>{{ $errors->first('time_of_occurence3') }}</strong>
 		                                    </span>
 		                                @endif
 		                            </div>
 		                        </div>
-														<div class="form-group{{ $errors->has('node_a') ? ' has-error' : '' }}">
-		                            <label for="node_a" class="col-md-4 control-label">Cause of failure</label>
+														<div class="form-group{{ $errors->has('cause_of_failure3') ? ' has-error' : '' }}">
+		                            <label for="cause_of_failure3" class="col-md-4 control-label">Cause of failure</label>
 
 		                            <div class="col-md-6">
-		                                <input id="node_a" type="text" class="form-control" name="cause_of_failure" value="{{ old('node_a') }}">
+		                                <input id="cause_of_failure3" type="text" class="form-control" name="cause_of_failure3" value="{{ old('cause_of_failure3') }}">
 
-		                                @if ($errors->has('node_a'))
+		                                @if ($errors->has('cause_of_failure3'))
 		                                    <span class="help-block">
-		                                        <strong>{{ $errors->first('node_a') }}</strong>
+		                                        <strong>{{ $errors->first('cause_of_failure3') }}</strong>
 		                                    </span>
 		                                @endif
 		                            </div>
 		                        </div>
 
-														<div id="message"  class="form-group{{ $errors->has('message') ? ' has-error' : '' }} ">
-		                            <label for="message" class="col-md-4 control-label">Impact</label>
+														<div id="impact3"  class="form-group{{ $errors->has('message') ? ' has-error' : '' }} ">
+		                            <label for="impact3" class="col-md-4 control-label">Impact</label>
 
 		                            <div class="col-md-6">
-		                                <textarea rows="10" id="message" class="form-control" name="message"></textarea>
+		                                <textarea rows="10" id="impact3" class="form-control" name="impact3"></textarea>
 
-		                                @if ($errors->has('message'))
+		                                @if ($errors->has('impact3'))
 		                                    <span class="help-block">
-		                                        <strong>{{ $errors->first('message') }}</strong>
+		                                        <strong>{{ $errors->first('impact3') }}</strong>
 		                                    </span>
 		                                @endif
 		                            </div>

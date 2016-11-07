@@ -110,7 +110,7 @@ class AdminController extends Controller
     {
 			$this->validate($request, [
             'name'     => 'required',
-            'email'  => 'required',
+            'email'  => 'required|unique:users',
             'phone_number'  => 'required',
 			'region'		=> 'required',
 			'role'		=> 'required',

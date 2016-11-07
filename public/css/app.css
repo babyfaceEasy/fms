@@ -1,3 +1,8 @@
+@-moz-document url-prefix() {
+    fieldset {
+        display: table-cell;
+    }
+}
 .hidden_info {
   display: none; }
 

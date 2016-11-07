@@ -50,6 +50,18 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('message') ? ' has-error' : ''}}">
+                            <label for="message" class="col-md-4 control-label">Message:</label>
+                            <div class="col-md-6">
+                                <textarea class="form-control" id="message" name="message"></textarea>
+                                @if ($errors->has('message'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('message') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
 	                    <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
