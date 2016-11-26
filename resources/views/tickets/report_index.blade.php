@@ -38,6 +38,15 @@
 		        					<a href="{{route('report.test', ['i', 'c'])}}" class="btn btn-success">Closed Tickets</a>
 		        				</td>
 		        			</tr>
+
+		        			<tr>
+		        				<td style="background-color: #eee">All</td>
+		        				<td>
+		        					<a href="{{route('report.test', ['a', 'o'])}}" class="btn btn-danger">Open Tickets</a>
+		        					
+		        					<a href="{{route('report.test', ['a', 'c'])}}" class="btn btn-success">Closed Tickets</a>
+		        				</td>
+		        			</tr>
 		        		</table>
 	        	</div>
 	        </div>

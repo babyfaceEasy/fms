@@ -75,7 +75,7 @@
                                 <span class="caret"></span></a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ url('download_report') }}">Download Reports</a></li>
+                                    <li><a href="{{ route('report.index') }}">Download Reports</a></li>
                                     <!--<li><a href="{{ url('reports') }}">All Reports</a></li>-->
                                 </ul>
                             </li>

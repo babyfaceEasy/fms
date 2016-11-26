@@ -262,9 +262,9 @@ class TicketsController extends Controller
             array_push($message, $request['location']);
         }
 
-        array_push($message, $request['time_of_occurence']);
-        array_push($message, $request['cause_of_failure']);
-        array_push($message, $request['impact']);
+        array_push($message, $time_of_occurence);
+        array_push($message, $cause_of_failure);
+        array_push($message, $impact);
 
         //dump($message);
         //die();

@@ -253,5 +253,81 @@ class ReportController extends Controller
                 });
             })->export('xlsx');
         }
+        else if($type == 'a' && $mode == 'o'){
+            //dis is to create the excel file
+            Excel::create('All', function($excel){
+
+                $excel->sheet('Open Tickets', function($sheet){
+
+                    $tickets =  Ticket::select(['id', 'category_id', 'user_id', 'ticket_id', 'title', 'priority', 'nodeA', 'nodeB', 'vendor', 'site_id', 'bsc', 'location','time_occurence', 'cause_of_failure', 'impact'])
+                    ->where([
+                            ['status', '=', 'Open']
+                        ])
+                    ->orderBy('category_id', 'asc')
+                    ->orderBy('priority', 'asc')
+                    ->get();
+
+                    $arr = array();
+
+                    foreach ($tickets as $ticket) {
+                        $cat = null;
+                        if($ticket->category_id == 1){
+                            $cat = "Transmission";
+                        }else if($ticket->category_id == 2){
+                            $cat = "Base Station Switch";
+                        }else{
+                            $cat = "IP Network";
+                        }
+                        $data = array($ticket->id, $cat, $ticket->user->email, $ticket->ticket_id, $ticket->title, $ticket->priority, $ticket->nodeA, $ticket->nodeB, $ticket->vendor, $ticket->site_id, $ticket->bsc, $ticket->location,$ticket->time_occurence, $ticket->cause_of_failure, $ticket->impact);
+
+                        array_push($arr, $data);
+                    }
+
+                //set titles
+
+                    $sheet->fromArray($arr, null, 'A1', false, false)->prependRow(
+                        array('Ticket Id', 'Category', 'Email', 'Ticket #', 'Title', 'Priority', 'Node A', 'Node B', 'Vendor', 'Site Id', 'BSC', 'Location', 'Time of Occurence', 'Caue of Failure', 'Impact')
+                    ); 
+                });
+            })->export('xlsx');
+        }//end of ekse if ($type == 'a' && $mode == 'o')
+        else if($type == 'a' && $mode == 'c'){
+            //dis is to create the excel file
+            Excel::create('All', function($excel){
+
+                $excel->sheet('Closed Tickets', function($sheet){
+
+                    $tickets =  Ticket::select(['id', 'category_id', 'user_id', 'ticket_id', 'title', 'priority', 'nodeA', 'nodeB', 'vendor', 'site_id', 'bsc', 'location','time_occurence', 'cause_of_failure', 'impact', 'resolution'])
+                    ->where([
+                            ['status', '=', 'Closed']
+                        ])
+                    ->orderBy('category_id', 'asc')
+                    ->orderBy('priority', 'asc')
+                    ->get();
+
+                    $arr = array();
+
+                    foreach ($tickets as $ticket) {
+                        $cat = null;
+                        if($ticket->category_id == 1){
+                            $cat = "Transmission";
+                        }else if($ticket->category_id == 2){
+                            $cat = "Base Station Switch";
+                        }else{
+                            $cat = "IP Network";
+                        }
+                        $data = array($ticket->id, $cat, $ticket->user->email, $ticket->ticket_id, $ticket->title, $ticket->priority, $ticket->nodeA, $ticket->nodeB, $ticket->vendor, $ticket->site_id, $ticket->bsc, $ticket->location,$ticket->time_occurence, $ticket->cause_of_failure, $ticket->impact, $ticket->resolution);
+
+                        array_push($arr, $data);
+                    }
+
+                //set titles
+
+                    $sheet->fromArray($arr, null, 'A1', false, false)->prependRow(
+                        array('Ticket Id', 'Category', 'Email', 'Ticket #', 'Title', 'Priority', 'Node A', 'Node B', 'Vendor', 'Site Id', 'BSC', 'Location', 'Time of Occurence', 'Caue of Failure', 'Impact', 'Resolution')
+                    ); 
+                });
+            })->export('xlsx');
+        }//end of ekse if ($type == 'a' && $mode == 'o')
     }//end of func
 }
